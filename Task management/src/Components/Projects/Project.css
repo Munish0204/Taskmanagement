@@ -1,0 +1,84 @@
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    padding: 100px;
+    color: #f7f7f7;
+  }
+  
+  h2, h3 {
+    color: #333;
+    text-align: center; 
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 50%; 
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%; 
+  }
+  
+  input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    align-self: center; 
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    width: 60%; 
+  }
+  
+  li {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  li strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  img, video {
+    margin-top: 10px;
+    border-radius: 5px;
+    max-width: 100%; 
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  button {
+    margin-right: 10px;
+  }
+  
