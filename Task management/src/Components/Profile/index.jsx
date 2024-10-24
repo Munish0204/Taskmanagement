@@ -1,104 +1,46 @@
-import React, { useState } from "react";
-import "./Profile.css";
-import profilePic from "../../assets/Sharwesh.jpg";
+import React from 'react';
+import './Profile.css'; // Import the CSS file
 
 const Profile = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [user, setUser] = useState({
-    name: "Sarweshwar",
-    email: "sarweshwardeivasihamani@gmail.com",
-    domain: "FullStack",
-    phone: "+91 6383073831",
-    linkedin: "https://www.linkedin.com/in/sarweshwardeivasihamani/",
-    github: "https://github.com/arunsarwesh",
-  });
-
-  const [formValues, setFormValues] = useState({ ...user });
-
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
-
-  const handleSave = () => {
-    setUser(formValues);
-    setIsEditing(false);
-  };
-
-  const handleCancel = () => {
-    setFormValues(user);
-    setIsEditing(false);
-  };
-
   return (
-    <div className="profile-container">
-      <h2>User Profile</h2>
-      <div className="profile-info">
-        <div className="profile-picture">
-          <img src={profilePic} alt="Profile" />
+    <div className="profile-page">
+      {/* About Section */}
+      <div className="about-section card">
+        <h2>About Me</h2>
+        <p>
+          Hello! I'm Sarweshwar, a passionate developer with a love for creating innovative
+          solutions and developing modern web applications. I have expertise in full-stack
+          development and always strive to learn new technologies and improve my skills.
+        </p>
+      </div>
+
+      {/* Profile Section */}
+      <div className="profile-section card">
+        <img 
+          src="../../assets/Sharwesh.jpg" 
+          alt="Profile" 
+          className="profile-picture"
+        />
+        <h2>Sarweshwar</h2>
+        <p>Full-Stack Developer</p>
+
+        {/* Contact Info */}
+        <div className="contact-info">
+          <p><strong>Phone:</strong> +123-456-7890</p>
+          <p><strong>Email:</strong> sarweshwar@example.com</p>
+          <p>
+            <strong>LinkedIn:</strong>{' '}
+            <a href="https://www.linkedin.com/in/sarweshwar" target="_blank" rel="noopener noreferrer">
+              LinkedIn Profile
+            </a>
+          </p>
+          <p>
+            <strong>GitHub:</strong>{' '}
+            <a href="https://github.com/sarweshwar" target="_blank" rel="noopener noreferrer">
+              GitHub Profile
+            </a>
+          </p>
         </div>
-        {isEditing ? (
-          <div className="edit-form">
-            <input
-              type="text"
-              name="name"
-              value={formValues.name}
-              onChange={handleInputChange}
-              placeholder="Name"
-            />
-            <input
-              type="email"
-              name="email"
-              value={formValues.email}
-              onChange={handleInputChange}
-              placeholder="Email"
-            />
-            <input
-              type="text"
-              name="domain"
-              value={formValues.domain}
-              onChange={handleInputChange}
-              placeholder="Domain"
-            />
-            <input
-              type="text"
-              name="phone"
-              value={formValues.phone}
-              onChange={handleInputChange}
-              placeholder="Phone Number"
-            />
-            <input
-              type="url"
-              name="linkedin"
-              value={formValues.linkedin}
-              onChange={handleInputChange}
-              placeholder="LinkedIn URL"
-            />
-            <input
-              type="url"
-              name="github"
-              value={formValues.github}
-              onChange={handleInputChange}
-              placeholder="GitHub URL"
-            />
-            <button onClick={handleSave} className="save-button">Save</button>
-            <button onClick={handleCancel} className="cancel-button">Cancel</button>
-          </div>
-        ) : (
-          <>
-            <p><strong>Name:</strong> {user.name}</p>
-            <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Domain:</strong> {user.domain}</p>
-            <p><strong>Phone:</strong> {user.phone}</p>
-            <p><strong>LinkedIn:</strong> <a href={user.linkedin} target="_blank" rel="noopener noreferrer">{user.linkedin}</a></p>
-            <p><strong>GitHub:</strong> <a href={user.github} target="_blank" rel="noopener noreferrer">{user.github}</a></p>
-            <button className="edit-button" onClick={handleEditClick}>Edit Profile</button>
-          </>
-        )}
       </div>
     </div>
   );

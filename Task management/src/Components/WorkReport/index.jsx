@@ -1,60 +1,73 @@
 import React, { useState } from "react";
-import "./WorkReport.css";
+import "./WorkReport.css"; // Import the CSS file
 
 const WorkReport = () => {
-  const [reports, setReports] = useState([]);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [media, setMedia] = useState(null);
+  const [reportsList, setReportsList] = useState([]);
 
-  const handleAddReport = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (title && description) {
-      setReports((prevReports) => [
-        ...prevReports,
-        { title, description },
-      ]);
-      setTitle('');
-      setDescription('');
+    if (title.trim() && description.trim()) {
+      const report = { title, description, media };
+      setReportsList((prev) => [...prev, report]);
+      setTitle(""); // Clear the title field
+      setDescription(""); // Clear the description field
+      setMedia(null); // Clear the media file
     }
   };
 
-  const handleDescriptionChange = (e) => {
-    const input = e.target.value;
-    const wordCount = input.trim().split(/\s+/).length;
-    if (wordCount <= 50) {
-      setDescription(input);
-    }
+  const handleMediaChange = (e) => {
+    setMedia(e.target.files[0]);
   };
 
   return (
     <div className="workreport-container">
-      <h2>Work Reports</h2>
-      <form onSubmit={handleAddReport} className="report-form">
+      <h2>Work Report</h2>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Report Title"
+          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
         <textarea
-          placeholder="Report Description (max 50 words)"
+          placeholder="Enter Report Description (up to 250 characters)"
           value={description}
-          onChange={handleDescriptionChange}
+          onChange={(e) => setDescription(e.target.value)}
+          maxLength={250} // Limit the input to 250 characters
           required
-          rows="5"
-          className="description-textarea"
         />
-        <p>{50 - description.trim().split(/\s+/).length} words remaining</p>
-        <button type="submit">Add Report</button>
+        <input
+          type="file"
+          accept="image/*,video/*"
+          onChange={handleMediaChange}
+          required
+        />
+        <button type="submit">Submit Report</button>
       </form>
 
       <h3>Submitted Reports</h3>
       <ul>
-        {reports.length > 0 ? (
-          reports.map((report, index) => (
+        {reportsList.length > 0 ? (
+          reportsList.map((report, index) => (
             <li key={index}>
-              <strong>{report.title}</strong>: {report.description}
+              <h4>{report.title}</h4>
+              <p>{report.description}</p>
+              {report.media && (
+                <div>
+                  {report.media.type.startsWith("image") ? (
+                    <img src={URL.createObjectURL(report.media)} alt="media" />
+                  ) : (
+                    <video controls>
+                      <source src={URL.createObjectURL(report.media)} />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+                </div>
+              )}
             </li>
           ))
         ) : (

@@ -1,36 +1,65 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import './Attendance.css';
+import React, { useState, useEffect } from 'react';
+import './Attendance.css'
 
-const Attendance = ({ userName }) => {
-  const [date, setDate] = useState(new Date());
-  const [attendance, setAttendance] = useState([]);
 
-  const handleDateChange = (newDate) => {
-    setDate(newDate);
-    const dateString = newDate.toDateString();
 
-    if (!attendance.includes(dateString)) {
-      setAttendance((prev) => [...prev, dateString]);
+const Attendance = () => {
+  const [dateTime, setDateTime] = useState('');
+  const [location, setLocation] = useState({ latitude: '', longitude: '' });
+  const [showDetails, setShowDetails] = useState(false);
+
+  // Get current date and time
+  const getCurrentDateTime = () => {
+    const current = new Date();
+    const formattedDateTime = current.toLocaleString();
+    setDateTime(formattedDateTime);
+  };
+
+  // Get user's live location
+  const fetchLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error('Error getting location:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation not supported');
     }
   };
 
+  // Fetch location and date when button is clicked
+  const handleAttendanceClick = () => {
+    getCurrentDateTime();
+    fetchLocation();
+    setShowDetails(true); // Show details only after click
+  };
+
   return (
-    <div className="attendance-container">
-      <h2>Today's</h2>
-      <h3>{userName}Attendance</h3>
-      <Calendar onChange={handleDateChange} value={date} />
-      <h3>Marked Attendance Dates</h3>
-      <ul>
-        {attendance.length > 0 ? (
-          attendance.map((attendDate, index) => (
-            <li key={index}>{attendDate}</li>
-          ))
-        ) : (
-          <li>No attendance marked yet.</li>
+    <div className="attendance-page">
+      <div className="attendance-card">
+        <h1>Attendance</h1>
+        <button onClick={handleAttendanceClick}>Mark Attendance</button>
+
+        {showDetails && (
+          <>
+            <div className="date-time">
+              <p>Date & Time: {dateTime}</p>
+            </div>
+            <div className="location">
+              <p>Location:</p>
+              <p>Latitude: {location.latitude}</p>
+              <p>Longitude: {location.longitude}</p>
+            </div>
+          </>
         )}
-      </ul>
+      </div>
     </div>
   );
 };

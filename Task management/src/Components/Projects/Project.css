@@ -1,15 +1,20 @@
 .projects-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    padding: 100px;
-    color: #f7f7f7;
+  background-color: #2c2c2c;
+  color: #fff;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 3rem auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.5s ease-out;
   }
   
-  h2, h3 {
-    color: #333;
-    text-align: center; 
+  .course-container h2{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #00d4ff;
+    animation: slideInDown 1.2s ease-out;
   }
   
   form {

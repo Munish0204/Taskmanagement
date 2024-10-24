@@ -43,7 +43,7 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p>© 2024 Metaverse. All Rights Reserved.</p>
+        <p>Created by Muneeswaran And Sarweshwar.</p>
       </footer>
     </div>
   );

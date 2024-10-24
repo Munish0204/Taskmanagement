@@ -1,93 +1,136 @@
-.profile-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 100px;
-    color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: none;
-    gap: 50%;
-  }
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
 
-  
-  .profile-info {
-    margin-bottom: 20px;
-    text-align: center;
+/* Profile Page Layout */
+.profile-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 50px auto;
+  gap: 20px;
+}
+
+/* Card Styles */
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
+  animation: slideIn 0.8s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #007bff, #00d4ff); /* Attractive gradient hover */
+  color: white; /* Change text color on hover */
+}
+
+.card:hover h2,
+.card:hover p {
+  color: white;
+}
+
+/* Slide-in animation for the cards */
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
   }
-  
-  .profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 15px;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .profile-picture img {
-    height: auto;
-    width: auto;
+}
+
+/* About Section (Left Side) */
+.about-section h2 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.about-section p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+}
+
+/* Profile Section (Right Side) */
+.profile-section {
+  text-align: center;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  animation: zoomIn 1s ease;
+}
+
+.profile-section h2 {
+  font-size: 1.8em;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.profile-section p {
+  font-size: 1.2em;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 20px;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.contact-info a:hover {
+  color: #00d4ff; /* Change link color to brighter blue */
+  text-shadow: 0 0 5px rgba(0, 212, 255, 0.8); /* Add a glowing effect */
+  text-decoration: underline;
+}
+
+/* Zoom-in effect for profile picture */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
   }
-  
-  .edit-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .edit-form input {
-    margin: 5px 0;
-    padding: 8px;
-    width: 80%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .save-button,
-  .cancel-button {
-    padding: 10px 15px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .save-button {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .cancel-button {
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  .edit-button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .edit-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .save-button:hover {
-    background-color: #218838;
-  }
-  
-  .cancel-button:hover {
-    background-color: #c82333;
-  }
-  
-  /* Link styles */
-  .profile-info a {
-    color: blue; /* Blue color for links */
-    text-decoration: none; /* Remove underline */
-  }
-  
-  .profile-info a:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
-  
+}
+
+/* Enhanced Hover Color and Shadow for Contact Links */
+.contact-info a:hover {
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+  background: linear-gradient(135deg, #007bff, #00d4ff); /* Gradient background */
+  padding: 2px 4px;
+  border-radius: 4px;
+}
