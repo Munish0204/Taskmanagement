@@ -1,33 +1,52 @@
-import React from 'react';
-import './Home.css'; // Import the CSS file
-import task from '../../assets/task.jpg'; // Correctly import the image
+import React from "react";
+import "./home.css";
 
-function Home() {
+function App() {
   return (
-    <div>
-      {/* Header Section */}
-      <header className="header">
-        <h1>Welcome to Metaverse</h1>
-        <p>Manage your tasks efficiently and stay organized!</p>
-      </header>
+    <div className="homepage">
+      <section className="hero" id="home">
+        <div className="overlay"></div>
+        <div className="hero-content">
+          <h1>Welcome to Metaverse</h1>
+          <p>Empowering students through innovation and collaboration.</p>
+          <p>Explore our clubs and shape the future of technology.</p>
+          <button className="cta-button">Join Us</button>
+        </div>
+      </section>
 
-      {/* Main Content Section */}
-      <div className="main-content">
-      <div className="image-section">
-        <img src={task} alt="Descriptive Alt Text" />
-      </div>
-      </div>
-        <section className="main-section">
-          <h2>Your Task</h2>
-          <p>
-            Welcome to your personal task manager. Here, you can view your task list, track
-            attendance, generate work reports, enroll in courses, and monitor your project progress.
-          </p>
-          <a href="#task" className="btn">Get Started</a>
-        </section>
+      <section className="clubs" id="clubs">
+        <div className="clubs-heading">
+          <h2>Our Clubs</h2>
+        </div>
+        <div className="club-grid">
+          <div className="club-card">
+            <h3>Full Stack Development</h3>
+            <p>Master web and app development from scratch.</p>
+          </div>
+          <div className="club-card">
+            <h3>AI & ML</h3>
+            <p>Unlock the power of artificial intelligence and machine learning.</p>
+          </div>
+          <div className="club-card">
+            <h3>Cybersecurity</h3>
+            <p>Explore ethical hacking and safeguard digital landscapes.</p>
+          </div>
+          <div className="club-card">
+            <h3>IoT</h3>
+            <p>Connect the world through the Internet of Things.</p>
+          </div>
+          <div className="club-card">
+            <h3>AR/VR</h3>
+            <p>Immerse in augmented and virtual realities.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <p>© 2024 Metaverse. All Rights Reserved.</p>
+      </footer>
     </div>
-
   );
 }
 
-export default Home;
+export default App;
