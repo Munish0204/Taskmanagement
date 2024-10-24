@@ -1,5 +1,6 @@
 import React from 'react';
 import './Profile.css'; // Import the CSS file
+import profile from '../../assets/Sharwesh.jpg'
 
 const Profile = () => {
   return (
@@ -17,7 +18,7 @@ const Profile = () => {
       {/* Profile Section */}
       <div className="profile-section card">
         <img 
-          src="../../assets/Sharwesh.jpg" 
+          src={profile} 
           alt="Profile" 
           className="profile-picture"
         />
@@ -26,17 +27,17 @@ const Profile = () => {
 
         {/* Contact Info */}
         <div className="contact-info">
-          <p><strong>Phone:</strong> +123-456-7890</p>
-          <p><strong>Email:</strong> sarweshwar@example.com</p>
+          <p><strong>Phone:</strong> +91 6383073831</p>
+          <p><strong>Email:</strong> sarweshwardeivasihamani@gmail.com</p>
           <p>
             <strong>LinkedIn:</strong>{' '}
-            <a href="https://www.linkedin.com/in/sarweshwar" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/sarweshwardeivasihamani/" target="_blank" rel="noopener noreferrer">
               LinkedIn Profile
             </a>
           </p>
           <p>
             <strong>GitHub:</strong>{' '}
-            <a href="https://github.com/sarweshwar" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/arunsarwesh" target="_blank" rel="noopener noreferrer">
               GitHub Profile
             </a>
           </p>

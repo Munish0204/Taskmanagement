@@ -8,6 +8,8 @@ import Courses from "./Components/Courses";
 import Projects from "./Components/Projects"; 
 import Profile from "./Components/Profile"; 
 import Logout from "./Components/Logout/index"
+import Login from "./Components/Home/Login/Login"; 
+import Signup from "./Components/Home/Login/Signup/Signup"; 
 import './App.css';
 
 const App = () => {
@@ -23,6 +25,8 @@ const App = () => {
           <Route path="/projects" element={<Projects />} /> 
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
     </Router>
